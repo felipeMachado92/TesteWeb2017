@@ -9,14 +9,14 @@ class Mercadoria {
     private $cdMercadoria;
     private $tpMercadoria;
     private $nmMercadoria;
-    private $prMercadoria;
+    private $vlMercadoria;
     
     //Construtor
-    function __construct($cdMercadoria, $tpMercadoria, $nmMercadoria, $prMercadoria) {
+    function __construct($cdMercadoria, $tpMercadoria, $nmMercadoria, $vlMercadoria) {
         $this->cdMercadoria = $cdMercadoria;
         $this->tpMercadoria = $tpMercadoria;
         $this->nmMercadoria = $nmMercadoria;
-        $this->prMercadoria = $prMercadoria;
+        $this->vlMercadoria = $vlMercadoria;
     }
     
     //Inicio Getters e Setters
@@ -32,8 +32,8 @@ class Mercadoria {
         return $this->nmMercadoria;
     }
 
-    function getPrMercadoria() {
-        return $this->prMercadoria;
+    function getVlMercadoria() {
+        return $this->vlMercadoria;
     }
 
     function setCdMercadoria($cdMercadoria) {
@@ -48,8 +48,8 @@ class Mercadoria {
         $this->nmMercadoria = $nmMercadoria;
     }
 
-    function setPrMercadoria($prMercadoria) {
-        $this->prMercadoria = $prMercadoria;
+    function setVlMercadoria($vlMercadoria) {
+        $this->vlMercadoria = $vlMercadoria;
     }
     
     //Fim Getters e Setters

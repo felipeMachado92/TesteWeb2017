@@ -9,14 +9,14 @@ class Negociacao {
     private $mercadoria;
     private $qtdMercadoria;
     private $tpNegociacao;
-    private $prNegociacao;
+    private $vlNegociacao;
     
     //Construtor da classe
-    function __construct($mercadoria, $qtdMercadoria, $tpNegociacao, $prNegociacao) {
+    function __construct($mercadoria, $qtdMercadoria, $tpNegociacao, $vlNegociacao) {
         $this->mercadoria = $mercadoria;
         $this->qtdMercadoria = $qtdMercadoria;
         $this->tpNegociacao = $tpNegociacao;
-        $this->prNegociacao = $prNegociacao;
+        $this->vlNegociacao = $vlNegociacao;
     }
     
     //Inicio Getters e Setters
@@ -32,8 +32,8 @@ class Negociacao {
         return $this->tpNegociacao;
     }
 
-    function getPrNegociacao() {
-        return $this->prNegociacao;
+    function getVlNegociacao() {
+        return $this->vlNegociacao;
     }
 
     function setMercadoria($mercadoria) {
@@ -48,8 +48,8 @@ class Negociacao {
         $this->tpNegociacao = $tpNegociacao;
     }
 
-    function setPrNegociacao($prNegociacao) {
-        $this->prNegociacao = $prNegociacao;
+    function setVlNegociacao($vlNegociacao) {
+        $this->vlNegociacao = $vlNegociacao;
     }
     
     //Inicio Getters e Setters
