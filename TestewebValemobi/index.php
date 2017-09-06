@@ -6,14 +6,22 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        
+        <script>
+            function Enviar(opt){
+                if(opt == 1){
+                    document.form.action = "conecta.php"
+                } else if (opt == 0 ){
+                    document.form.action = "novaMercadoria.php"
+                }
+            }
+        </script>
     </head>
     <body>
-        <form method="get" action="gravar.php">
+        <form method="get" name="form" action="">
             <label>ID da mercadoria</label><br>
             <input type="number" min="1" name="id">
             
-            <input type="button" value="Pesquisar" onclick="pesquisar()"><br>
+            <input type="submit" value="Pesquisar" onclick="Enviar(0)"><br>
             
             <label>Quantidade da mercadoria</label><br>
             <input type="number" min="1" name="quantidade"><br>
@@ -27,7 +35,7 @@
                 <option value="venda">Venda</option>
             </select><br>
             
-            <input class="btn btn-default" type="submit" value="Salvar">
+            <input type="submit" value="Salvar" onclick="Enviar(1)">
         </form>
     </body>
 </html>
