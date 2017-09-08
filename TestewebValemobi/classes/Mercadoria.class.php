@@ -8,6 +8,7 @@
 
 require_once 'Conecta.class.php';
 class Mercadoria {
+    private $con;
     private $cdMercadoria;
     private $tpMercadoria;
     private $nmMercadoria;
