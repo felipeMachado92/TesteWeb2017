@@ -50,7 +50,9 @@ class Mercadoria {
     
         public function querySeleciona($dado){
         try{
-            $cst = $this->con->conectar()->prepare("SELECT cd_mercadoria, nm_mercadoria, tp_mercadoria, vl_mercadoria FROM `tb_mercadoria` WHERE `cd_mercadoria` = :cd_mercadoria;");
+            $this->cdMercadoria = $dado;
+            $cst = $this->con->conectar()->prepare("SELECT cd_mercadoria, nm_mercadoria, tp_mercadoria, vl_mercadoria FROM `tb_mercadoria` "
+                    . "WHERE `cd_mercadoria` = :cdMercadoria;");
             $cst->bindValue(":cdMercadoria", $this->cdMercadoria);
             $cst->execute();
             return $cst->fetch();
