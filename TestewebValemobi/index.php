@@ -10,13 +10,13 @@
     $merc = new Mercadoria();
     $neg = new Negociacao();
     
-    if(isset($_POST['btSalvar'])){
-        if($neg->queryInsert($_POST) == 'ok'){
-            header('location: index.php');
-        }else{
-            echo '<script type="text/javascript">alert("Erro em cadastrar");</script>';
-        }
+    if(isset($_POST['cdMercadoria'])){
+        $pesq = $merc->querySeleciona($_POST['cdMercadoria']);
+        
     }
+    
+    
+    
 ?>
 <html>
     <head>
@@ -24,20 +24,29 @@
         <title></title>
         <script>
             function Enviar(opt){
-                if(opt === 1){
-                    document.form.action = "conecta.php";
-                } else if (opt === 0 ){
+                if(opt == 1){
                     document.form.action = "novaMercadoria.php";
+                } else if (opt == 0 ){
+                    document.form.action = "index.php";
                 }
             }
         </script>
     </head>
     <body>
-        <form method="get" name="form" action="">
-            <label>ID da mercadoria</label><br>
-            <input type="number" min="1" name="id">
+        <form method="post" name="form" action="">
+            <label>Código da mercadoria</label><br>
+            <input type="number" min="1" name="cdMercadoria" value="<?= isset($pesq['cd_mercadoria'])?$pesq['cd_mercadoria']:" "?>">
             
-            <input type="submit" value="Pesquisar" onclick="Enviar(0)"><br>
+            <input type="submit" value="Pesquisar" name="btPesquisar"  onclick="Enviar(0)"><br>
+            
+            <label>Tipo da mercadoria</label><br>
+            <input type="text" name="tipoMerc" value="<?= isset($pesq['tp_mercadoria'])?$pesq['tp_mercadoria']:" "?>" readonly><br>
+
+            <label>Nome da mercadoria</label><br>
+            <input type="text" name="nome" value="<?= isset($pesq['nm_mercadoria'])?$pesq['nm_mercadoria']:" "?>" readonly><br>
+            
+            <label>Preço</label><br>
+            <input type="text" name="preco" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:" "?>" readonly><br>
             
             <label>Quantidade da mercadoria</label><br>
             <input type="number" min="1" name="quantidade"><br>
