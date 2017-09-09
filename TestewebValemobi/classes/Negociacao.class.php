@@ -9,7 +9,7 @@ require_once 'Conecta.class.php';
 require_once 'Mercadoria.class.php';
 class Negociacao {
     private $con;
-    private $mercadoria;
+    private $cdMercadoria;
     private $qtdMercadoria;
     private $tpNegociacao;
     private $vlNegociacao;
@@ -29,15 +29,14 @@ class Negociacao {
     public function queryInsert($dados){
         try{
             $this->qtdMercadoria = $dados['qtdMercadoria'];
-            $this->nmMercadoria = $dados['nmMercadoria'];
             $this->tpNegociacao = $dados['tpNegociacao'];
             $this->vlNegociacao = $dados['vlNegociacao'];
-            $this->mercadoria=$dados['cdMercadoria'];
-            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlMercadoria, :cdMercadoria);");
+            $this->cdMercadoria=$dados['cdMercadoria'];
+            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpNegociacao, :vlNegociacao, :cdMercadoria);");
+            $cst->bindParam(":qtdMercadoria", $this->qtdMercadoria, PDO::PARAM_INT);
+            $cst->bindParam(":tpNegociacao", $this->tpNegociacao, PDO::PARAM_STR);
+            $cst->bindParam(":vlNegociacao", $this->vlNegociacao, PDO::PARAM_STR);
             $cst->bindParam(":cdMercadoria", $this->cdMercadoria, PDO::PARAM_INT);
-            $cst->bindParam(":nmMercadoria", $this->nmMercadoria, PDO::PARAM_STR);
-            $cst->bindParam(":tpMercadoria", $this->tpMercadoria, PDO::PARAM_STR);
-            $cst->bindParam(":vlMercadoria", $this->vlMercadoria, PDO::PARAM_STR);
             if($cst->execute()){
                 return 'ok';
             }else{
