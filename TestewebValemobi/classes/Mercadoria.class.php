@@ -15,7 +15,7 @@ class Mercadoria {
     private $vlMercadoria;
     
     public function __construct(){
-        $this->con = new Conexao();
+        $this->con = new Conecta();
     }
     
     public function __set($atributo, $valor){
@@ -32,11 +32,12 @@ class Mercadoria {
             $this->nmMercadoria = $dados['nmMercadoria'];
             $this->tpMercadoria = $dados['tpMercadoria'];
             $this->vlMercadoria = $dados['vlMercadoria'];
-            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_mercadoria` (`cd_mercadoria`, `nm_mercadoria`, `tp_mercadoria`, `vl_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlMercadoria);");
-            $cst->bindParam(":cdMercadoria", $this->cdMercadoria, PDO::PARAM_INT);
-            $cst->bindParam(":nmMercadoria", $this->nmMercadoria, PDO::PARAM_STR);
-            $cst->bindParam(":tpMercadoria", $this->tpMercadoria, PDO::PARAM_STR);
-            $cst->bindParam(":vlMercadoria", $this->vlMercadoria, PDO::PARAM_STR);
+            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_mercadoria` (`cd_mercadoria`, `nm_mercadoria`, `tp_mercadoria`, `vl_mercadoria`) "
+                    . "VALUES (:cdMercadoria, :nmMercadoria, :tpMercadoria, :vlMercadoria);");
+            $cst->bindValue(":cdMercadoria", $this->cdMercadoria);
+            $cst->bindValue(":nmMercadoria", $this->nmMercadoria);
+            $cst->bindValue(":tpMercadoria", $this->tpMercadoria);
+            $cst->bindValue(":vlMercadoria", $this->vlMercadoria);
             if($cst->execute()){
                 return 'ok';
             }else{
@@ -49,8 +50,8 @@ class Mercadoria {
     
         public function querySeleciona($dado){
         try{
-            $cst = $this->con->conectar()->prepare("SELECT cd_mercadoria, nm_mercadoria, tp_mercadoria, vl_mercadoria FROM `tb_mercadoria` WHERE `cd_mercadoria` = :cdMercadoria;");
-            $cst->bindParam(":cdMercadoria", $this->cdMercadoria, PDO::PARAM_INT);
+            $cst = $this->con->conectar()->prepare("SELECT cd_mercadoria, nm_mercadoria, tp_mercadoria, vl_mercadoria FROM `tb_mercadoria` WHERE `cd_mercadoria` = :cd_mercadoria;");
+            $cst->bindValue(":cdMercadoria", $this->cdMercadoria);
             $cst->execute();
             return $cst->fetch();
         } catch (PDOException $ex) {
