@@ -15,7 +15,7 @@ class Negociacao {
     private $vlNegociacao;
     
     public function __construct(){
-        $this->con = new Conexao();
+        $this->con = new Conecta();
     }
     
     public function __set($atributo, $valor){
@@ -32,11 +32,12 @@ class Negociacao {
             $this->tpNegociacao = $dados['tpNegociacao'];
             $this->vlNegociacao = $dados['vlNegociacao'];
             $this->cdMercadoria=$dados['cdMercadoria'];
-            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlNegociacao, :cdMercadoria);");
-            $cst->bindParam(":qtdMercadoria", $this->qtdMercadoria, PDO::PARAM_INT);
-            $cst->bindParam(":tpNegociacao", $this->tpNegociacao, PDO::PARAM_STR);
-            $cst->bindParam(":vlNegociacao", $this->vlNegociacao, PDO::PARAM_STR);
-            $cst->bindParam(":cdMercadoria", $this->cdMercadoria, PDO::PARAM_INT);
+            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) "
+                    . "VALUES (:qtdMercadoria, :tpNegociacao, :vlNegociacao, :cdMercadoria);");
+            $cst->bindValue(":qtdMercadoria", $this->qtdMercadoria);
+            $cst->bindValue(":tpNegociacao", $this->tpNegociacao);
+            $cst->bindValue(":vlNegociacao", $this->vlNegociacao);
+            $cst->bindValue(":cdMercadoria", $this->cdMercadoria);
             if($cst->execute()){
                 return 'ok';
             }else{
