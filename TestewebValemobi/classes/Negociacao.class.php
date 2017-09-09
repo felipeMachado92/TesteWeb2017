@@ -32,7 +32,8 @@ class Negociacao {
             $this->nmMercadoria = $dados['nmMercadoria'];
             $this->tpNegociacao = $dados['tpNegociacao'];
             $this->vlNegociacao = $dados['vlNegociacao'];
-            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_mercadoria` (`cd_mercadoria`, `nm_mercadoria`, `tp_mercadoria`, `vl_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlMercadoria);");
+            $this->mercadoria=$dados['cdMercadoria'];
+            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlMercadoria, :cdMercadoria);");
             $cst->bindParam(":cdMercadoria", $this->cdMercadoria, PDO::PARAM_INT);
             $cst->bindParam(":nmMercadoria", $this->nmMercadoria, PDO::PARAM_STR);
             $cst->bindParam(":tpMercadoria", $this->tpMercadoria, PDO::PARAM_STR);
@@ -44,6 +45,17 @@ class Negociacao {
             }
         } catch (PDOException $ex) {
             return 'error '.$ex->getMessage();
+        }
+    }
+    
+        public function querySelect(){
+        try{
+            $cst = $this->con->conectar()->prepare("SELECT ``tb_mercadoria.cd_mercadoria`, `tp_mercadoria`, `nm_mercadoria`, `qtd_mercadoria`, `vl_mercadoria`, `tp_negociacao`, `vl_total` FROM `tb_negociacao`, `mercadoria` "
+                    . "WHERE `tb_mercadoria.cd_mercadoria` = `tb_negociacao.cd_mercadoria`;");
+            $cst->execute();
+            return $cst->fetchAll();
+        } catch (PDOException $ex) {
+            return 'erro '.$ex->getMessage();
         }
     }
     
