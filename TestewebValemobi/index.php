@@ -2,16 +2,32 @@
 <!--
     Página inicial onde o usuário poderá cadastrar nova negociação
 -->
+<?php
+    require_once 'classes/Conecta.class.php';
+    require_once 'classes/Mercadoria.class.php';
+    require_once 'classes/Negociacao.class.php';
+    
+    $merc = new Mercadoria();
+    $neg = new Negociacao();
+    
+    if(isset($_POST['btSalvar'])){
+        if($neg->queryInsert($_POST) == 'ok'){
+            header('location: index.php');
+        }else{
+            echo '<script type="text/javascript">alert("Erro em cadastrar");</script>';
+        }
+    }
+?>
 <html>
     <head>
         <meta charset="UTF-8">
         <title></title>
         <script>
             function Enviar(opt){
-                if(opt == 1){
-                    document.form.action = "conecta.php"
-                } else if (opt == 0 ){
-                    document.form.action = "novaMercadoria.php"
+                if(opt === 1){
+                    document.form.action = "conecta.php";
+                } else if (opt === 0 ){
+                    document.form.action = "novaMercadoria.php";
                 }
             }
         </script>
@@ -35,7 +51,7 @@
                 <option value="venda">Venda</option>
             </select><br>
             
-            <input type="submit" value="Salvar" onclick="Enviar(1)">
+            <input type="submit" value="Salvar" name="btSalvar" onclick="Enviar(1)">
         </form>
     </body>
 </html>
