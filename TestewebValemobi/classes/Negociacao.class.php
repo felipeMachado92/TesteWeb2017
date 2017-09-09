@@ -32,7 +32,7 @@ class Negociacao {
             $this->tpNegociacao = $dados['tpNegociacao'];
             $this->vlNegociacao = $dados['vlNegociacao'];
             $this->cdMercadoria=$dados['cdMercadoria'];
-            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpNegociacao, :vlNegociacao, :cdMercadoria);");
+            $cst = $this->con->conectar()->prepare("INSERT INTO `tb_negociacao` (`qtd_mercadoria`, `tp_negociacao`, `vl_total`, `cd_mercadoria`) VALUES (:cdMercdoria, :nmMercadoria, :tpMercadoria, :vlNegociacao, :cdMercadoria);");
             $cst->bindParam(":qtdMercadoria", $this->qtdMercadoria, PDO::PARAM_INT);
             $cst->bindParam(":tpNegociacao", $this->tpNegociacao, PDO::PARAM_STR);
             $cst->bindParam(":vlNegociacao", $this->vlNegociacao, PDO::PARAM_STR);
