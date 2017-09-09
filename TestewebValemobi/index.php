@@ -12,9 +12,15 @@
     
     if(isset($_POST['cdMercadoria'])){
         $pesq = $merc->querySeleciona($_POST['cdMercadoria']);
-        
     }
     
+    if(isset($_POST['btSalvar'])) {
+         if($neg->queryInsert($_POST) == 'ok'){
+             header('location:index.php');
+         } else {
+             echo '<script type="text/javascript">alert("Erro em cadastrar");</script>';
+         }
+     }
     
     
 ?>
@@ -22,15 +28,6 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <script>
-            function Enviar(opt){
-                if(opt == 1){
-                    document.form.action = "novaMercadoria.php";
-                } else if (opt == 0 ){
-                    document.form.action = "index.php";
-                }
-            }
-        </script>
     </head>
     <body>
         <form method="post" name="form" action="">
@@ -40,22 +37,22 @@
             <input type="submit" value="Pesquisar" name="btPesquisar"  onclick="Enviar(0)"><br>
             
             <label>Tipo da mercadoria</label><br>
-            <input type="text" name="tipoMerc" value="<?= isset($pesq['tp_mercadoria'])?$pesq['tp_mercadoria']:" "?>" readonly><br>
+            <input type="text" name="tpMercadoria" value="<?= isset($pesq['tp_mercadoria'])?$pesq['tp_mercadoria']:" "?>" readonly><br>
 
             <label>Nome da mercadoria</label><br>
-            <input type="text" name="nome" value="<?= isset($pesq['nm_mercadoria'])?$pesq['nm_mercadoria']:" "?>" readonly><br>
+            <input type="text" name="nmMercadoria" value="<?= isset($pesq['nm_mercadoria'])?$pesq['nm_mercadoria']:" "?>" readonly><br>
             
             <label>Preço</label><br>
-            <input type="text" name="preco" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:" "?>" readonly><br>
+            <input type="text" name="vlMercadoria" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:" "?>" readonly><br>
             
             <label>Quantidade da mercadoria</label><br>
-            <input type="number" min="1" name="quantidade"><br>
+            <input type="number" min="1" name="qtdMercadoria"><br>
             
             <label>Valor Total</label><br>
-            <input type="text" name="total"><br>
+            <input type="text" name="vlNegociacao" ><br>
             
             <label>Tipo de negócio</label><br>
-            <select class="form-control" name="tipoNeg">
+            <select class="form-control" name="tpNegociacao">
                 <option value="compra">Compra</option>
                 <option value="venda">Venda</option>
             </select><br>
