@@ -21,22 +21,49 @@ Página onde o usuário poderá cadastrar nova mercadoria
         <meta charset="UTF-8">
         <title></title>
         <script src="javascript/validaoes.js"></script> 
+        <link rel="stylesheet" type="text/css" href="bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
     </head>
     <body>
-        <form name="form" action="" method="post" >
-            <label>Código da mercadoria</label><br>
-            <input type="number" min="1" name="cdMercdoria"><br>
+        <header>
+                <nav class="navbar navbar-inverse ">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                Shop More
+                            </a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.php">Cadastrar Negociação</a></li>
+                            <li><a href="#">Nova Mercadoria</a></li>
+                            <li><a href="listaNegociacoes.php">Histórico de Transação</a></li>
+                        </ul>
+                    </div>
+                </nav>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="container principal">
+                    <section>
+                        <form name="form" action="" method="post" >
+                            <label>Código da mercadoria</label><br>
+                            <input type="number" min="1" class=" form-control input-sm" name="cdMercdoria"><br>
 
-            <label>Tipo da mercadoria</label><br>
-            <input type="text" name="tpMercadoria"><br>
+                            <label>Tipo da mercadoria</label><br>
+                            <input type="text" class=" form-control input-sm" name="tpMercadoria"><br>
 
-            <label>Nome da mercadoria</label><br>
-            <input type="text" name="nmMercadoria"><br>
-            
-            <label>Preço</label><br>
-            <input type="text" name="vlMercadoria" onkeypress="return Onlynumbers(event)"><br>
-            
-            <input type="submit" value="Salvar" name="btSalvar">
-        </form>
+                            <label>Nome da mercadoria</label><br>
+                            <input type="text" class=" form-control input-sm" name="nmMercadoria"><br>
+
+                            <label>Preço</label><br>
+                            <input type="text" class=" form-control input-sm" name="vlMercadoria" onkeypress="return Onlynumbers(event)"><br>
+
+                            <center><input type="submit"  class="btn btn-default salvar" value="Salvar" name="btSalvar"></center>
+                        </form>
+                    </section>
+                </div>
+            </div>
+        </main>
     </body>
 </html>
