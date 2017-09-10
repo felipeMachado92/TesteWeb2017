@@ -50,8 +50,9 @@ class Negociacao {
     
         public function querySelect(){
         try{
-            $cst = $this->con->conectar()->prepare("SELECT ``tb_mercadoria.cd_mercadoria`, `tp_mercadoria`, `nm_mercadoria`, `qtd_mercadoria`, `vl_mercadoria`, `tp_negociacao`, `vl_total` FROM `tb_negociacao`, `mercadoria` "
-                    . "WHERE `tb_mercadoria.cd_mercadoria` = `tb_negociacao.cd_mercadoria`;");
+            $cst = $this->con->conectar()->prepare("SELECT tb_mercadoria.cd_mercadoria, nm_mercadoria, tp_mercadoria, vl_mercadoria, qtd_mercadoria, vl_total, tp_negociacao  "
+                    . "FROM tb_negociacao, tb_mercadoria "
+                    . "WHERE tb_mercadoria.cd_mercadoria = tb_negociacao.cd_mercadoria ORDER BY cd_negociacao ASC;");
             $cst->execute();
             return $cst->fetchAll();
         } catch (PDOException $ex) {
