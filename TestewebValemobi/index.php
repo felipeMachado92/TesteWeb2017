@@ -16,7 +16,7 @@
     
     if(isset($_POST['btSalvar'])) {
          if($neg->queryInsert($_POST) == 'ok'){
-             header('location:index.php');
+             header('location:listaNegociacoes.php');
          } else {
              echo '<script type="text/javascript">alert("Erro em cadastrar");</script>';
          }
@@ -28,6 +28,7 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <script src="javascript/validaoes.js"></script> 
     </head>
     <body>
         <form method="post" name="form" action="">
@@ -43,13 +44,13 @@
             <input type="text" name="nmMercadoria" value="<?= isset($pesq['nm_mercadoria'])?$pesq['nm_mercadoria']:" "?>" readonly><br>
             
             <label>Preço</label><br>
-            <input type="text" name="vlMercadoria" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:" "?>" readonly><br>
+            <input  type="text" name="vlMercadoria" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:"00.00 "?>" readonly><br>
             
             <label>Quantidade da mercadoria</label><br>
-            <input type="number" min="1" name="qtdMercadoria"><br>
+            <input  type="number" min="1" name="qtdMercadoria" onchange="calculaTotal()"><br>
             
             <label>Valor Total</label><br>
-            <input type="text" name="vlNegociacao" ><br>
+            <input type="text" name="vlNegociacao" readonly><br>
             
             <label>Tipo de negócio</label><br>
             <select class="form-control" name="tpNegociacao">

@@ -20,6 +20,7 @@ Página onde o usuário poderá cadastrar nova mercadoria
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <script src="javascript/validaoes.js"></script> 
     </head>
     <body>
         <form name="form" action="" method="post" >
@@ -33,7 +34,7 @@ Página onde o usuário poderá cadastrar nova mercadoria
             <input type="text" name="nmMercadoria"><br>
             
             <label>Preço</label><br>
-            <input type="text" name="vlMercadoria"><br>
+            <input type="text" name="vlMercadoria" onkeypress="return Onlynumbers(event)"><br>
             
             <input type="submit" value="Salvar" name="btSalvar">
         </form>
