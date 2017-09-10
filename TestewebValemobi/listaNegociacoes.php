@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Histórico de negociações</title>
         <link rel="stylesheet" type="text/css" href="bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
@@ -14,7 +14,7 @@
                     <div class="container">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">
-                                Shop More
+                                Teste Web 2017
                             </a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
@@ -26,6 +26,7 @@
                 </nav>
         </header>
         <main>
+            <center><h3 class="fundo-branco">Histórico de Transação</h3></center>
             <div class="container-fluid">
                 <div class="container">
                     <section>
@@ -61,5 +62,12 @@
                 </div>
             </div>
         </main>
+        <footer class="fixo">
+                <div class="footer-copyright">
+                    <div class="container">
+                        <center><p>Desenvolvido por Felipe Machado</p></center>
+                    </div>
+                </div>
+            </footer>
     </body>
 </html>
