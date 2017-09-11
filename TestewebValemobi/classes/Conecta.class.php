@@ -13,10 +13,10 @@ class Conecta {
         private static $pdo;
         
         function __construct() {
-            $this->usuario = "root";
-            $this->senha = "";
+            $this->usuario = "felipeMachado92";
+            $this->senha = "mrpipo@1992";
             $this->banco = "testeweb";
-            $this->servidor = "localhost";
+            $this->servidor = "felipemachado.database.windows.net";
         }
         
         public function conectar() {
