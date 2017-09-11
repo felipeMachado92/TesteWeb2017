@@ -29,9 +29,9 @@
         <meta charset="UTF-8">
         <title>Seja bem vindo!</title>
         <script src="javascript/validaoes.js"></script>
-        <link rel="stylesheet" type="text/css" href="bootstrap\bootstrap-3.3.7-dist\css\bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css">
         <link href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css\estilo.css">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
     </head>
     <body>
                 <header>
