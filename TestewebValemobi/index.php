@@ -59,7 +59,7 @@
                                 <center><label>Código da mercadoria</label><br></center>
                                 <center><input type="number" min="1" name="cdMercadoria"   value="<?= isset($pesq['cd_mercadoria'])?$pesq['cd_mercadoria']:" "?>">
 
-                                <input type="submit" class="btn btn-default btn-pesquisar" value="Pesquisar" name="btPesquisar"  onclick="Enviar(0)"><br></center>
+                                <input type="submit" class="btn btn-default btn-pesquisar" value="Pesquisar" name="btPesquisar"><br></center>
 
                                 <label>Tipo da mercadoria</label><br>
                                 <input type="text" name="tpMercadoria" class=" form-control input-sm" value="<?= isset($pesq['tp_mercadoria'])?$pesq['tp_mercadoria']:" "?>" readonly><br>
@@ -74,7 +74,7 @@
                                 <input  type="number" min="1" name="qtdMercadoria" value="1" class=" form-control input-sm"  onchange="calculaTotal()"><br>
 
                                 <label>Valor Total</label><br>
-                                <input type="text" class=" form-control input-sm" name="vlNegociacao" readonly><br>
+                                <input type="text" class=" form-control input-sm" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:"00.00 "?>" name="vlNegociacao" readonly><br>
 
                                 <label>Tipo de negócio</label><br>
                                 <select class="form-control" name="tpNegociacao">
