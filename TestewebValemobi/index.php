@@ -71,7 +71,7 @@
                                 <input  type="text" name="vlMercadoria" class=" form-control input-sm" value="<?= isset($pesq['vl_mercadoria'])?$pesq['vl_mercadoria']:"00.00 "?>" readonly><br>
 
                                 <label>Quantidade da mercadoria</label><br>
-                                <input  type="number" min="1" name="qtdMercadoria" class=" form-control input-sm"  onchange="calculaTotal()"><br>
+                                <input  type="number" min="1" name="qtdMercadoria" value="1" class=" form-control input-sm"  onchange="calculaTotal()"><br>
 
                                 <label>Valor Total</label><br>
                                 <input type="text" class=" form-control input-sm" name="vlNegociacao" readonly><br>
