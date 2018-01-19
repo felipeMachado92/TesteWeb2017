@@ -82,7 +82,7 @@
                                     <option value="venda">Venda</option>
                                 </select><br>
 
-                                <center><input type="submit" class="btn btn-default salvar" value="Salvar" name="btSalvar" onclick="Enviar(1)"></center>
+                                <center><input type="submit" class="btn btn-default salvar" value="Salvar" name="btSalvar"></center>
                             </form>
                         </section>
                     </div>
